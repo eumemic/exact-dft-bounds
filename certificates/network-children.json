@@ -1,0 +1,42 @@
+{
+ "description": "Per-vertex child list of the paired-cube complex supplier of CrocSwap/integer-mult-bounds (PR #144 integration). A child of width rho applies C^{(x)rho} (or its inverse) after rank-zero adapters; roles_per_vertex counts persistent arrays per cover vertex.",
+ "source": {
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "commit": "d1d6c070f5a8c684727ee7ec35d930f9ebfa9758",
+  "path": "certificates/paired-cube-complex-input.json",
+  "sha256": "11894aa8fd4d5e258ec534726eba5fc9c9fa7b826f993e229425c31ee2ad2440"
+ },
+ "m": 72,
+ "h": 24,
+ "v": 1760,
+ "R": 26417,
+ "loss": 528,
+ "roles_per_vertex": 29937,
+ "rank_per_vertex": 2153528,
+ "deficit_per_vertex": 1936,
+ "child_histogram": {
+  "1": 79374,
+  "2": 81787,
+  "3": 34704,
+  "4": 29763,
+  "5": 22455,
+  "6": 8535,
+  "7": 7929,
+  "8": 7881,
+  "9": 3603,
+  "10": 5829,
+  "11": 3261,
+  "12": 3291,
+  "13": 2028,
+  "14": 6972,
+  "15": 2478,
+  "16": 6789,
+  "17": 4794,
+  "18": 1194,
+  "19": 11760,
+  "20": 11880,
+  "21": 2640,
+  "22": 2712,
+  "60": 4840
+ }
+}

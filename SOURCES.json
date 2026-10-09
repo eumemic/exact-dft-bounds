@@ -1,0 +1,23 @@
+{
+ "network": {
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "commit": "d1d6c070f5a8c684727ee7ec35d930f9ebfa9758",
+  "path": "certificates/paired-cube-complex-input.json",
+  "sha256": "11894aa8fd4d5e258ec534726eba5fc9c9fa7b826f993e229425c31ee2ad2440",
+  "derived": "certificates/network-children.json",
+  "derived_sha256": "2264a75539a29d320dca595042ac1b73be2ea5b72bd28413d37f8713e9e9c60c",
+  "proof_notes": [
+   "notes/paired-cube-construction.tex",
+   "notes/paired-cube-sharing.tex",
+   "notes/three-stage-cover-complex.tex",
+   "notes/general-clifford-frames.tex",
+   "notes/endpoint-gauge-complex.tex",
+   "notes/copied-centers-lemma.tex"
+  ]
+ },
+ "exact_dft_framework": {
+  "repository": "https://github.com/openai/math",
+  "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "path": "preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026"
+ }
+}

@@ -1,0 +1,33 @@
+Exact DFT with a batched tensor recursion
+Copyright 2026 eumemic
+
+Prepared by eumemic with substantial assistance from Claude (Anthropic).
+Licensed under the Apache License, Version 2.0; see LICENSE.
+
+New in this repository: the batched recursion and address lemma for the exact-DFT model
+(notes/batched-dft-note.tex, Lemma 2.2 and Theorem 3.1), the exact moment certificate
+(scripts/verify_moment.py, certificates/moment.json), and the observation that the network
+below applies to the exact DFT. The batched accounting itself was introduced for integer
+multiplication by icekylinx in CrocSwap/integer-mult-bounds.
+
+The finite network is the paired-cube complex supplier of CrocSwap/integer-mult-bounds:
+  https://github.com/CrocSwap/integer-mult-bounds
+  commit d1d6c070f5a8c684727ee7ec35d930f9ebfa9758 (merged PR #144 integration)
+certificates/network-children.json is derived from that repository's
+certificates/paired-cube-complex-input.json (sha256 recorded in SOURCES.json), which is
+Apache-2.0. Its NOTICE, CONTRIBUTORS.md and docs/research/community-round6-review.md at that
+commit give the authoritative attribution for the network, and all of it applies here.
+Principal contributors to this network: icekylinx (paired cubes, signed channels,
+coordinate-star centers, frame and carrier compiler, gauges, arbitrary-subspace Clifford frames,
+three-stage covers, copied retained centers, endpoint gauges, batched recursion; with OpenAI
+GPT-6 Astra and Codex assistance); an664 (completed-core sharing, PR #128; with OpenAI Codex
+assistance); eumemic (positive producer DAG, PR #117, and earlier complex networks and source
+frames; with Claude assistance); Aurel Prosz (Paureel); Zhihao Chen (jacklightChen); Swapnil
+Jain; dleen; Douglas Colkitt (repository, framework, integration and review); and OpenAI
+(original complex phase network). Other contributors credited there for this lineage retain
+that credit. None of them has reviewed this repository.
+
+The exact-DFT framework whose Sections 3-5 are reused is OpenAI, "An explicit power saving for
+the exact discrete Fourier transform" (25 September 2026), https://github.com/openai/math,
+commit adc7f1241b42e322a6451854ab7e4b4c146bf78a. No text or code from it is copied here.
+This repository is not an OpenAI release or endorsement.
