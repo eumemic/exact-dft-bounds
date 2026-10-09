@@ -5,6 +5,7 @@ TECTONIC ?= tectonic
 
 verify:
 	$(PYTHON) scripts/verify_moment.py
+	$(PYTHON) scripts/verify_moment.py --children certificates/network-children-pr200.json --a 3327/5000000
 	$(PYTHON) scripts/check_sources.py
 
 note:

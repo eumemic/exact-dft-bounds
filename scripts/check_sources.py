@@ -20,6 +20,17 @@ def main():
     assert moment['children_sha256'] == digest and moment['passed'], 'moment certificate is stale or failed'
     print('sources PASS: children %s, upstream %s at %s' % (digest[:12], sources['network']['sha256'][:12],
                                                           sources['network']['commit'][:7]))
+    # the PR #200 supplier (research/paired-cube-diagonal-bit-168/certificate.json at a1175449)
+    pin = sources['network_pr200']
+    children = (ROOT / 'certificates' / 'network-children-pr200.json').read_bytes()
+    digest = hashlib.sha256(children).hexdigest()
+    assert digest == pin['derived_sha256'], 'PR200 children file differs from SOURCES.json pin'
+    meta = json.loads(children)
+    assert meta['source']['sha256'] == pin['sha256'] and meta['source']['commit'] == pin['commit'], 'PR200 upstream pin mismatch'
+    moment = json.loads((ROOT / 'certificates' / 'moment-pr200.json').read_text())
+    assert moment['children_sha256'] == digest and moment['passed'], 'PR200 moment certificate is stale or failed'
+    assert moment['a'] == '3327/5000000', 'PR200 moment certificate records another saving'
+    print('sources PASS: PR200 children %s, upstream %s at %s, a = %s' % (digest[:12], pin['sha256'][:12], pin['commit'][:7], moment['a']))
 
 
 if __name__ == '__main__':

@@ -211,3 +211,21 @@ Jain's frozen witness, notices and historical assistance disclosures.
 Earlier generalized Clifford, three-stage, uniform weighted recursion,
 ordinary-leaf, semantic/bulk, precision and analytic credits remain in force.
 Source-specific license bytes are preserved under references/.
+
+
+--- Supplier of Section 5 (PR #200 of CrocSwap/integer-mult-bounds, commit a1175449) ---
+Prepared by Chafik Boukhalfa with substantial Anthropic Claude and OpenAI Codex assistance. Apache-2.0.
+Inherited files retain their original notices and assistance disclosures. The package's lineage (reproduced
+from its NOTICE): icekylinx (PR144 paired cubes, signed decoder, shared-core accounting, original compiler and
+finite bridge; PR130 generalized Clifford frames); eumemic (PR117 module infrastructure; PR155/157 scalar modules,
+physical frames/reuse; PR161 output merging and searched p12 module; PR168 annealed modules, nested-prefix
+schedules, local L1 circuit, fused outputs, bundle descent, physical layers and terminal-sink gate, pinned at
+4a3c769e5c5430e7114c4d3e099ff34664677f17; their Anthropic Claude and OpenAI Codex disclosures are retained;
+PR131/143 frame/reuse and late-read lineage; PR154 isolated snapshot verification); jamesyc / James Chang (PR124
+compensated birth cuts, PR34 balanced assembly, PR166 terminal-output accumulation); GamingPuzzled / Joel
+Pulikkan (PR160); DaysSky (PR162 extended carrier closure, PR192 frame-layout ceiling); gupt1156 PR148 and
+Abhinav Ramachandran/geckods PR158 (Hermes assistance); jacklightChen / Zhihao Chen (PR23/29); Rohan Arun
+(PR100/103); earlier bit lineage: Zhihao Chen PR97, Swapnil Jain, an664 PR128, DaysSky PR150, hpst3r PR147,
+SovereignSteak PR122. Verification infrastructure: Chafik Boukhalfa, PR175 (OpenAI Codex assistance).
+This section claims only the observation that the PR #200 complex supplier is a batched network in the sense of
+the note and the re-check of its moment; it claims no exclusive priority over concurrent work.

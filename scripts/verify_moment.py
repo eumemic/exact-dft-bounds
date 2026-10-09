@@ -14,7 +14,7 @@ Bounds used (all exact):
   (rho/m)**theta = (rho/m) * exp(a * ln(m/rho)),
   ln(x) <= 2*sum_{j<J} y**(2j+1)/(2j+1) + 2*y**(2J+1)/((2J+1)(1-y**2)),  y = (x-1)/(x+1),
   exp(x) <= 1 + x + x**2 / (2*(1 - x/3))  for 0 <= x < 3.
-usage: verify_moment.py [--a NUM/DEN] [--write certificates/moment.json]"""
+usage: verify_moment.py [--a NUM/DEN] [--children FILE] [--write certificates/moment.json]"""
 import argparse
 import hashlib
 import json
@@ -56,9 +56,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--a', default=None, help='saving a = 1 - theta as NUM/DEN (default 4856/10^7)')
     ap.add_argument('--write', type=Path)
+    ap.add_argument('--children', type=Path, default=CHILDREN, help='child histogram file (default certificates/network-children.json)')
     o = ap.parse_args()
     a = Fraction(o.a) if o.a else DEFAULT_A
-    raw = CHILDREN.read_bytes()
+    raw = o.children.read_bytes()
     data = json.loads(raw)
     m = data['m']
     W = data['roles_per_vertex']

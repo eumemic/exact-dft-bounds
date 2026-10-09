@@ -1,4 +1,21 @@
-# Exact DFT with a 4.856·10⁻⁴ power saving in the logarithm
+# Exact DFT with a 6.654·10⁻⁴ power saving in the logarithm
+
+**Update (PR #200 supplier).** Replacing the network by the complex supplier of CrocSwap/integer-mult-bounds
+PR #200 (commit `a1175449`, package `research/paired-cube-diagonal-bit-168`: the PR #168 v4 lineage with its own
+physical frames, 2,310 reuse pairs and 44 terminal sinks; m = 66, 13,163 roles per cover vertex, deficit 1,320,
+largest child 20) gives
+
+$$
+\theta = 1-\frac{3327}{5000000} = 1-6.654\times10^{-4},
+$$
+
+checked by `scripts/verify_moment.py --children certificates/network-children-pr200.json --a 3327/5000000`
+(margin 2.69·10⁻³ out of W = 13,163; the control at a = 6655/10⁷ fails). The proof by reference is
+Section 5 of the note (`prop:network200`, `prop:moment200`, `thm:main200`); the PR #144 result below is retained
+unchanged. The frontier complex supplier of that repository (PR #193/#202, 7.009·10⁻⁴) passes the same moment check
+but is certified through a different (local-flow) contract and is listed as a candidate, not claimed.
+
+## The PR #144 result
 
 $$
 T(n)=O\!\left(n(\log n)^{\theta}(\log\log n)^{4-\theta}\right),\qquad

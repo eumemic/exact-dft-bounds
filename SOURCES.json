@@ -19,5 +19,22 @@
   "repository": "https://github.com/openai/math",
   "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
   "path": "preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026"
+ },
+ "network_pr200": {
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "pr": 200,
+  "commit": "a1175449f34d39ff933d9d8ab23ced1f32b290ec",
+  "path": "research/paired-cube-diagonal-bit-168/certificate.json",
+  "field": "complex.profile",
+  "sha256": "853afa75980e11ce16b333c28311c4f635e84065867c049fda9916c2419091ed",
+  "derived": "certificates/network-children-pr200.json",
+  "derived_sha256": "333a4e26efb3c26c37c14b42ba000173c30a7b843b1b459aa3f99529c277457f",
+  "proof_notes": [
+   "research/paired-cube-diagonal-bit-168/PROOF.md",
+   "research/paired-cube-diagonal-bit-168/references/pr168-v4/notes/general-clifford-frames.tex",
+   "research/paired-cube-diagonal-bit-168/references/pr166/PROOF.md",
+   "research/paired-cube-diagonal-bit-168/references/pr141/ORIGINAL-PROOF.md"
+  ],
+  "prerequisite": "PR #168 v4 at 4a3c769e5c5430e7114c4d3e099ff34664677f17 (eumemic), vendored under references/pr168-v4 of that package"
  }
 }
