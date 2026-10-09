@@ -30,7 +30,8 @@ def main():
         assert meta['source']['sha256'] == pin['sha256'] and meta['source']['commit'] == pin['commit'], '%s upstream pin mismatch' % name
         moment = json.loads((ROOT / 'certificates' / ('moment-%s.json' % name)).read_text())
         assert moment['children_sha256'] == digest and moment['passed'], '%s moment certificate is stale or failed' % name
-        assert moment['a'] == saving, '%s moment certificate records another saving' % name
+        from fractions import Fraction
+        assert Fraction(moment['a']) == Fraction(saving), '%s moment certificate records another saving' % name
         print('sources PASS: %s children %s, upstream %s at %s, a = %s' % (name, digest[:12], pin['sha256'][:12], pin['commit'][:7], moment['a']))
 
 
