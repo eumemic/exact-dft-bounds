@@ -229,3 +229,9 @@ Abhinav Ramachandran/geckods PR158 (Hermes assistance); jacklightChen / Zhihao C
 SovereignSteak PR122. Verification infrastructure: Chafik Boukhalfa, PR175 (OpenAI Codex assistance).
 This section claims only the observation that the PR #200 complex supplier is a batched network in the sense of
 the note and the re-check of its moment; it claims no exclusive priority over concurrent work.
+
+--- Supplier of Section 6 (PR #194 of CrocSwap/integer-mult-bounds, commit a8c8778) ---
+Source-assisted construction: icekylinx (PR #184, OpenAI GPT-6 Astra assistance; Codex for integration), rebuilt on
+the PR #168 v4 modules by ikeboy (PR #193/#194). Inherited paired-cube, matching, gauge, semantic, shared-core and
+module credits as in that package's CREDITS.md and the PR #168 lineage above. This section claims only the
+observation that the flow word is a batched network in the sense of the note and the re-check of its moment.

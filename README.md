@@ -1,4 +1,4 @@
-# Exact DFT with a 6.654·10⁻⁴ power saving in the logarithm
+# Exact DFT with a 7.009·10⁻⁴ power saving in the logarithm
 
 **Update (PR #200 supplier).** Replacing the network by the complex supplier of CrocSwap/integer-mult-bounds
 PR #200 (commit `a1175449`, package `research/paired-cube-diagonal-bit-168`: the PR #168 v4 lineage with its own
@@ -12,8 +12,20 @@ $$
 checked by `scripts/verify_moment.py --children certificates/network-children-pr200.json --a 3327/5000000`
 (margin 2.69·10⁻³ out of W = 13,163; the control at a = 6655/10⁷ fails). The proof by reference is
 Section 5 of the note (`prop:network200`, `prop:moment200`, `thm:main200`); the PR #144 result below is retained
-unchanged. The frontier complex supplier of that repository (PR #193/#202, 7.009·10⁻⁴) passes the same moment check
-but is certified through a different (local-flow) contract and is listed as a candidate, not claimed.
+unchanged. 
+**Update (PR #194 supplier).** The source-assisted complex supplier of that repository (icekylinx's PR #184
+construction on the v4 modules, ikeboy's PR #194 at `a8c8778`, package `research/source-assisted-v4`, field
+`complex_profile`: m = 66, 12,052 roles per cover vertex, deficit 1,320, largest child 20) gives
+
+$$
+\theta = 1-\frac{7009}{10^{7}} = 1-7.009\times10^{-4},
+$$
+
+checked by `scripts/verify_moment.py --children certificates/network-children-pr194.json --a 7009/10000000`
+(margin 5.3·10⁻⁴; the control at 7010/10⁷ fails). Section 6 of the note gives the proof by reference
+(`prop:network194`, `prop:moment194`, `thm:main194`): the flow word is a linear word with dyadic-coefficient gates,
+monotone nested frame chains and exact invertible lifts, so it is a batched network with the ledger's child
+histogram. The two later suppliers rest on different compilations and either theorem may be cited on its own.
 
 ## The PR #144 result
 

@@ -41,7 +41,9 @@ is replaced by the complex supplier of the community repository
 contributors, credited in Section~\ref{sec:credits}. The rest of OpenAI's
 argument is used unchanged. Section~\ref{sec:pr200} (added by Chafik Boukhalfa,
 with Anthropic Claude assistance) replaces the network by the complex supplier
-of that repository's PR \#200 and obtains $\theta=1-3327/5000000=1-6.654\times10^{-4}$. The same bound holds for exact complex convolution
+of that repository's PR \#200 and obtains $\theta=1-3327/5000000=1-6.654\times10^{-4}$;
+Section~\ref{sec:pr194} uses its source-assisted supplier (PR \#184/\#194) and
+obtains $\theta=1-7009/10^{7}=1-7.009\times10^{-4}$. The same bound holds for exact complex convolution
 as a bilinear algorithm, with general multiplication allowed for the pointwise
 products as in OpenAI's Corollary~1.3. The theorem depends on the correctness of that network. Its
 proofs are written arguments, checked in part by scripts, and have had no
@@ -492,17 +494,88 @@ Section~\ref{sec:proof}; nothing else changes. The width $m=66$ enters only
 through the moment and the base range.
 \end{proof}
 
-\begin{remark}
-The frontier of \cite{cms} at the time of writing also has a complex supplier
-with moment root $7.00918\times10^{-4}$ (PR \#193/\#202, the source-assisted
-word of icekylinx and ikeboy), certified through a different formalism (an exact
-local-flow contract with local lifts rather than the physical frame ledger).
-Its child histogram passes \path{verify\_moment.py} at $a=7009/10^{7}$. We do
-not claim it here: transferring its contract to Definition~\ref{def:network}
-needs its own proof by reference, and PR \#192 (DaysSky) shows that no frame
-layout of the \#168 word can exceed $7.010\times10^{-4}$, so that would be
-close to the ceiling of this family.
-\end{remark}
+\section{The source-assisted supplier: PR \#194}\label{sec:pr194}
+The frontier complex supplier of \cite{cms} at the time of writing is the
+source-assisted word of icekylinx (PR \#184, with OpenAI GPT-6 Astra assistance)
+rebuilt on the PR \#168 v4 modules by ikeboy (PR \#193/\#194, \cite{pr194}). It
+is a different compilation of the same paired-cube program: equal-frame
+fresh-channel compression (``frame flow'') with exact arbitrary-dirty lifts.
+Its parameters are $h=22$, $m=66$, $v=1320$, $W=12{,}052$ roles per cover
+vertex, deficit $1320$ and largest child $20$.
+
+\begin{proposition}\label{prop:network194}
+The complex supplier of \cite{pr194} is a batched network of width $m=66$ on
+$W=|G|\cdot12052$ roles, with $N_\rho=|G|\cdot n_\rho$ and $n_\rho$ the
+per-vertex child histogram in \path{certificates/network-children-pr194.json}
+(field \path{complex\_profile} of its \path{certificate.json}). Every child has
+width at most $20$.
+\end{proposition}
+
+\begin{proof}[Proof (by reference)]
+The construction is \path{notes/source-assisted-note.tex} of \cite{cms}
+(PR \#184) with the v4 package \path{research/source-assisted-v4} of
+\cite{pr194}; its checkers are \path{complex\_frame\_flow.py},
+\path{exact\_complex\_flow\_lift.py} and \path{contract\_v4.py}.
+\begin{enumerate}
+\item The complete transcript is a linear word $z_{\rm final}=Mz+Lx$ with $M$
+  invertible: every operation is an exact local map with dyadic coefficients
+  (the lift certificate records all coefficients in $\{\pm1,\pm2,\pm1/2\}$
+  and their inverse elementary gate programs), applied pointwise, or an
+  original-source control; these are gates. Reads subtract the new dirty
+  response $Az$ at frame zero and leave $y+Bx$ with $K+B=I$ checked exactly;
+  after all reads every live and retired auxiliary is brought to the full
+  frame and every gate is reversed, restoring $z$. This is the one-column
+  identity, replayed by the independent complex scalar transcript with
+  arbitrary dirty probes and mutation controls; Lemma~\ref{lem:columns}
+  extends it to every $f$.
+\item The flow is monotone along nested frame chains (``later reads follow
+  their certified nested chains''; the lift checker verifies a monotone flow
+  and an acyclic once-only reuse DAG, with frame containment at every
+  vertex). Each frame transition is an exact operator with entries in
+  $\mathbb Q(i)$ that normalizes $\mathcal P$, so Lemma~\ref{lem:normal} writes
+  it as adapters around one child of width its Fourier rank; the per-vertex
+  child histogram counts these transitions, the births of fresh coordinates
+  through paid containing-frame transitions, the data children and the
+  copied centres, with the same ledger identity
+  $\sum_\rho\rho\,n_\rho=794112=66\cdot12052-1320$.
+\item The invertible auxiliary maps of the lemma of that note realize all
+  outgoing forms at a frame from the incoming fresh responses plus
+  source controls and retain the complementary coordinates; they are gates
+  on the arrays at that frame, and the compression removes roles, not
+  children.
+\item The contract checker certifies the fresh columns, read chronology,
+  target chains and the normalized profile, and \cite{pr194} certifies the
+  moment root $7.00918\ldots\times10^{-4}$ with outward intervals.
+\end{enumerate}
+As for Proposition~\ref{prop:network}, the exact complex phases and the cover
+are written arguments; the scalar transcript replay checks the one-column
+identity but does not materialize the physical Clifford transports. The
+retained all-size interfaces of \cite{pr194} that concern the multiplication
+assembly are not used here.
+\end{proof}
+
+\begin{proposition}\label{prop:moment194}
+For the network of Proposition~\ref{prop:network194} and
+$\theta=1-7009/10^{7}$,
+$\sum_\rho n_\rho(\rho/66)^{\theta}<12052-0.00052$, so $\mu<1$. The script fails
+at $a=7010/10^{7}$.
+\end{proposition}
+
+\begin{theorem}\label{thm:main194}
+Theorem~\ref{thm:main} holds with $\theta=1-7009/10^{7}=1-7.009\times10^{-4}$.
+For every fixed $\kappa<7009/10^{7}$, both problems take
+$O\bigl(n(\log n)^{1-\kappa}\bigr)$ operations.
+\end{theorem}
+
+\begin{proof}
+As for Theorem~\ref{thm:main200}, with
+Propositions~\ref{prop:network194} and~\ref{prop:moment194}.
+\end{proof}
+
+Theorems~\ref{thm:main200} and~\ref{thm:main194} rest on different
+suppliers: the first on the physical-frame ledger of PR \#168/\#200, whose
+construction is the closest to Proposition~\ref{prop:network}; the second on
+the flow compilation of PR \#184/\#194. Either may be cited on its own.
 
 \section{Proof of Theorem~\ref{thm:main}}\label{sec:proof}
 By Propositions~\ref{prop:network} and~\ref{prop:moment},
@@ -636,6 +709,11 @@ re-check of the moment, and the observation that the community network applies.
   \texttt{a1175449f34d39ff933d9d8ab23ced1f32b290ec}, package
   \path{research/paired-cube-diagonal-bit-168} (its complex supplier is the
   one used here).
+\bibitem{pr194} ikeboy, \emph{Source-assisted v4 complex word with PR189's bit
+  supplier}, PR \#194 of \url{https://github.com/CrocSwap/integer-mult-bounds},
+  commit \texttt{a8c87783785be6fe20c4a8bb2ac4b3eec295a179}, package
+  \path{research/source-assisted-v4}; construction by icekylinx (PR \#184,
+  \path{notes/source-assisted-note.tex}), with OpenAI GPT-6 Astra assistance.
 \bibitem{cms} D.~Colkitt et al., \emph{A sharper exponent for integer
   multiplication} (community repository),
   \url{https://github.com/CrocSwap/integer-mult-bounds}, commit

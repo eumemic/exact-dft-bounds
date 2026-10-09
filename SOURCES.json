@@ -36,5 +36,21 @@
    "research/paired-cube-diagonal-bit-168/references/pr141/ORIGINAL-PROOF.md"
   ],
   "prerequisite": "PR #168 v4 at 4a3c769e5c5430e7114c4d3e099ff34664677f17 (eumemic), vendored under references/pr168-v4 of that package"
+ },
+ "network_pr194": {
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "pr": 194,
+  "commit": "a8c87783785be6fe20c4a8bb2ac4b3eec295a179",
+  "path": "research/source-assisted-v4/certificate.json",
+  "field": "complex_profile",
+  "sha256": "1600b77cb1f41c0f87967f20133eccda5e6c5f215b70361dfd0c49c861248e59",
+  "derived": "certificates/network-children-pr194.json",
+  "derived_sha256": "d78a1b9543609c2abfe242b175b0fb8d489ac1fd2eb770b281c18c5bd812dda5",
+  "proof_notes": [
+   "notes/source-assisted-note.tex (PR #184, icekylinx)",
+   "docs/source-assisted.md",
+   "research/source-assisted-v4/PROOF.md"
+  ],
+  "prerequisite": "PR #184 (icekylinx) source-assisted construction; PR #168 v4 modules at 4a3c769e5c5430e7114c4d3e099ff34664677f17"
  }
 }
