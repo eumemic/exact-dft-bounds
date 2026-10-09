@@ -5,7 +5,7 @@ Prepared by eumemic with substantial assistance from Claude (Anthropic).
 Licensed under the Apache License, Version 2.0; see LICENSE.
 
 New in this repository: the batched recursion and address lemma for the exact-DFT model
-(notes/batched-dft-note.tex, Lemma 2.2 and Theorem 3.1), the normal-form lemma as used here
+(notes/batched-dft-note.tex, Lemmas 2.2-2.3 and Theorem 3.1), the normal-form lemma as used here
 (Lemma 4.1), an independent exact re-check of the moment (scripts/verify_moment.py,
 certificates/moment.json; the upstream repository certifies the same moment), and the
 observation that the network

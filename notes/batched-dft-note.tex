@@ -39,9 +39,9 @@ instead of $\rho$ separate directional steps. Second, the fixed finite network
 is replaced by the complex supplier of the community repository
 \texttt{CrocSwap/integer-mult-bounds}. That network was built by many
 contributors, credited in Section~\ref{sec:credits}. The rest of OpenAI's
-argument is used unchanged. The same bound holds for exact complex convolution,
-with general multiplication allowed for the pointwise products as in OpenAI's
-Corollary~1.3. The theorem depends on the correctness of that network. Its
+argument is used unchanged. The same bound holds for exact complex convolution
+as a bilinear algorithm, with general multiplication allowed for the pointwise
+products as in OpenAI's Corollary~1.3. The theorem depends on the correctness of that network. Its
 proofs are written arguments, checked in part by scripts, and have had no
 independent human review (Section~\ref{sec:scope}).
 \end{abstract}
@@ -62,8 +62,9 @@ There is a deterministic algorithm that, for every $n\ge1$ and every
 $x\in\mathbb C^n$, computes $F_nx$ exactly in
 $O\bigl(n(\log n)^{\theta}(\log\log n)^{4-\theta}\bigr)$ operations,
 where $\theta=1-607/1250000$. The same bound holds for the linear convolution
-of two vectors in $\mathbb C^n$ when general field multiplication is allowed for
-the pointwise products, as in \cite[Corollary~1.3]{oai-dft}.
+of two vectors in $\mathbb C^n$ by a bilinear algorithm (not an input-linear
+circuit), with general field multiplication allowed for the pointwise products,
+as in \cite[Corollary~1.3]{oai-dft}.
 \end{theorem}
 
 \begin{corollary}
@@ -115,6 +116,47 @@ Let $N_\rho$ be the number of children of width $\rho$.
 Children on temporaries are counted in $N_\rho$, but temporaries are not roles.
 This is the usual rank deficit: $\sum_\rho\rho N_\rho<Wm$ is necessary for a
 saving, and copies of shared values spend part of it.
+
+The property for every $f$ is not automatic. A list that is correct for $f=1$
+can fail for larger $f$. For example, copy $A$ to $T$, apply a child $P$ to $T$,
+and subtract $T$ from $A$. This gives $I-P^{\otimes f}$, not $(I-P)^{\otimes f}$.
+The following condition rules this out.
+
+\begin{lemma}\label{lem:columns}
+Give every array a \emph{frame}, an invertible operator on
+$\mathbb C^{\F_2^m}$ with entries in $\mathbb Q(i)$.
+\begin{itemize}
+\item Roles start at the identity, and a temporary created by a copy takes the
+  frame of its source.
+\item An adapter or child replaces the frame $R$ of its array by $XR$, where $X$
+  is its one-column operator. An adapter's operator includes its per-column
+  scalar $\omega$.
+\end{itemize}
+Suppose every gate touches only arrays whose current frames are equal as
+operators, and every temporary ends at zero. Let $S$ be the matrix of the
+scalar network obtained by deleting all adapters and children, and let $R_w$ be
+the final frame of role $w$. Then for every $f$ the list maps
+$A_w\mapsto\sum_{w'}S_{ww'}R_w^{\otimes f}A_{w'}$. If for $f=1$ it maps
+$A_w\mapsto C^{\otimes m}A_w$ for every role, then for every $f$ it maps
+$A_w\mapsto S_{ww}^{1-f}C^{\otimes mf}A_w$. A final adapter with $\omega=S_{ww}$
+(identity address map, $q=0$) followed by the fixed gate $S_{ww}^{-1}$ multiplies
+role $w$ by $S_{ww}^{f-1}$, which gives the property of
+Definition~\ref{def:network} for every $f$.
+\end{lemma}
+
+\begin{proof}
+By induction over the list, each array $a$ holds
+$R_a^{\otimes f}\sum_{w'}S^{(t)}_{aw'}A_{w'}$, where $S^{(t)}$ is the scalar
+network so far. An adapter or child applies $X^{\otimes f}$ and so multiplies the
+frame. A gate acts on arrays that hold $R^{\otimes f}v_j$ with the same $R$. It
+maps them to $R^{\otimes f}\sum_jg_{ij}v_j$, because a pointwise scalar map
+commutes with an operator applied identically to every touched array. A copy
+duplicates $R^{\otimes f}v$. For $f=1$ the hypothesis gives
+$S_{ww'}R_w=\delta_{ww'}C^{\otimes m}$. Since $R_w$ is invertible, $S_{ww'}=0$ for
+$w'\ne w$ and $R_w=S_{ww}^{-1}C^{\otimes m}$. Hence
+$S_{ww}R_w^{\otimes f}=S_{ww}^{1-f}C^{\otimes mf}$. Temporaries are handled in the
+same way.
+\end{proof}
 
 \begin{lemma}\label{lem:address}
 Let $k=mf+r$ with $0\le r<m$. Fix an adapter as in
@@ -172,7 +214,8 @@ batch with zero arrays, and run $\mathcal A(\rho f)$ on each batch. Then undo th
 movement. An inverse child is a forward child followed by a translation
 \cite[Lemma~2.2]{oai-dft}. Correctness follows by induction on $k$, because
 $\rho f<k$ and Definition~\ref{def:network} holds for arbitrary role values.
-Zero padding is mapped to zero.
+Zero padding is mapped to zero. Each call allocates and zeroes its own
+temporaries, at cost $O(2^k)$ per temporary.
 
 There is a constant $A_0$, depending only on $\mathcal N$ and $m$, with
 \[
@@ -291,10 +334,20 @@ The construction and its proofs are in \cite{cms}, pinned at commit
   $\sum_\rho\rho\,n_\rho=2153528=72\cdot29937-1936$, with largest child $60$.
 \end{enumerate}
 All gate coefficients are rational or $i$, with denominators dividing $6$.
-The identities are between operators on arrays indexed by $\F_2^{m}$ and
-pointwise scalar maps across roles. Scalar maps commute with tensoring along
-columns, so the identities hold columnwise for $f$ columns, with frames
-$\Phi^{\otimes f}$ as in \cite[(2.6)]{oai-dft}. Routing between invocations
+The star-center scatter, for example, uses the prepared rational scalar $-1/6$,
+which the model of \cite[\S1.1]{oai-dft} allows.
+
+The network is frame-consistent in the sense of Lemma~\ref{lem:columns}: at every
+common scalar gate it uses one identical exact representative on all incident
+registers (\path{notes/general-clifford-frames.tex}, \S``Exact representatives
+and nested children''). Its frames are the representatives $T_U$ of that note,
+which are defined for every binary subspace $U$, including the degenerate star
+frames $U_i$. We do not use the frames $\Phi_U$ of \cite[(2.5)]{oai-dft}, which
+need $U$ nondegenerate. Fact~1 is the identity for one column, so
+Lemma~\ref{lem:columns} gives it for every $f$. Upstream also states the
+$f$-column form of each residual directly: one $C^{\otimes rf}$ child, the scalar
+raised to the power $f$, and columnwise quadratic phases modulo four
+(\path{notes/endpoint-gauge-complex.tex}). Routing between invocations
 renames arrays. Every multiplicity is $|G|$ times the per-vertex count, so
 $|G|$ cancels from $\mu$. The data fronts, rank-two complements, width-$60$ gauge
 children, copied-center transforms, endpoint Paulis and bank exchange all
@@ -321,23 +374,25 @@ $4.85657\ldots\times10^{-4}$. As a control, the script fails at
 $a=4.8566\times10^{-4}$.
 \end{proof}
 
-This is an independent re-check. The repository \cite{cms} certifies the same
-moment at the slightly larger saving $4856569/10^{10}$, with normalized gap
-about $2.0\times10^{-10}$, in \path{scripts/paired_cube_network.py}. Our script
+This is an independent re-check, and $607/1250000$ is the upstream saving
+rounded down. The repository \cite{cms} certifies the same moment at
+$a_c=4856569/10^{10}$ (\path{notes/paired-cube-assembly.tex}, with normalized gap
+about $2.0\times10^{-10}$ in \path{scripts/paired_cube_network.py}). Our script
 also passes at that value, with margin $6.0\times10^{-6}$, and either value may
 be used in Theorem~\ref{thm:main}.
 
 \section{Proof of Theorem~\ref{thm:main}}\label{sec:proof}
 By Propositions~\ref{prop:network} and~\ref{prop:moment},
 Theorem~\ref{thm:batched} gives $C^{\otimes k}$ in $O(2^k(k+1)^\theta)$ with
-$\theta=1-607/1250000$, using only constants in $\mathbb Q(i)$.
+$\theta=1-607/1250000$, using only rational constants and $i$, which \cite[\S5.3]{oai-dft} relies on.
 
 The remaining sections of \cite{oai-dft} use their Theorem~2.6 through this
 bound and through two further properties: only constants in $\mathbb Q(i)$ are
 needed, which fixes the root order $D_*$ in their \S5, and the word-size
 accounting of the recursion. Both hold for Theorem~\ref{thm:batched}. The
 exact-width Fourier words of \S3, the sector synchronization of \S4
-(Proposition~4.2, where each width-$2^k$ sector carries $C^{\otimes k}$), and
+(\cite[Proposition~4.2]{oai-dft}, where each width-$2^k$ sector carries
+$C^{\otimes k}$), and
 the small-prime working lengths and chirp convolution of \S5 are used
 unchanged. Their final estimate also uses $\theta>0$. With our $\theta$ their
 proof of Theorem~1.1 gives $O\bigl(n\ell^\theta(\log\ell)^4\bigr)$, where
@@ -355,30 +410,46 @@ explicitness result, with no practical crossover.
 
 \section{Scope}\label{sec:scope}
 This note is a paper proof plus an exact finite certificate. It is not formally
-verified. The Lean formalization of \cite{oai-dft} (\path{lean/docs/130.md} in
-that repository) covers the original uniform $10^{-13}$ DFT and convolution
-statements, not the changes here.
+verified. The commit of openai/math pinned for \cite{oai-dft}
+(\texttt{adc7f12}) has no Lean formalization of its uniform statements. A
+formalization of the uniform $10^{-13}$ DFT and convolution statements was
+added later, at commit \texttt{3014888} (8 October 2026), in
+\path{lean/ComparatorChallenges/UniformFourier.lean} and
+\path{lean/OAI/Computability/FourierTransform/}, with scope in
+\path{lean/docs/130.md}. It does not cover the changes here.
 
 Theorem~\ref{thm:main} depends on Proposition~\ref{prop:network}, whose proof
 is the construction of \cite{cms}. That construction has had maintainer review
-with AI assistance but no independent human peer review. Its records state
-what is checked by script and what is a written argument:
+assisted by OpenAI Codex, but no independent human peer review. Its records
+state what is checked by script and what is a written argument:
 \begin{itemize}
-\item checked by script: the local scalar map on all $1760^2=3{,}097{,}600$
-  source/target entries, binary frame and rank data, and integer replays of
-  the mixer;
+\item checked by script: the local scalar identities, including the local
+  scalar map on all $1760^2=3{,}097{,}600$ source/target entries, binary frame
+  and rank data, and integer replays of the mixer;
 \item frame checks cover binary geometry, not exact complex phases;
-\item the sharing, routing and precision arguments are written proofs.
+\item the exact complex phases, the Cayley cover and completed-core sharing are
+  written proofs, and the cover is not materialized by the verifier.
 \end{itemize}
 By Lemma~\ref{lem:normal}, the child histogram depends only on the binary frame
 data.
 
-In \cite{cms} the network is one input to a conditional integer-multiplication
-bound. That bound retains several hypotheses: the analytic reduction, semantic
-precision, exact recovery, uniform recursion, fixed-tape setup, the
-opposite-bank primitive, ordered-affine streaming, prime packing and ordinary
-leaves. None of them is used here. The recursion used here is
-Theorem~\ref{thm:batched}.
+In \cite{cms} the network is one input to an integer-multiplication bound.
+That bound is conditional on the interfaces stated in
+\path{notes/paired-cube-note.tex} there. Each one is either replaced here or not
+needed:
+\begin{itemize}
+\item Uniform recursion is replaced by Theorem~\ref{thm:batched}.
+\item Ordered-affine streaming of the address work is replaced by
+  Lemma~\ref{lem:address}.
+\item Analytic reduction, semantic precision and exact recovery concern
+  finite-precision Gaussian resampling and recovery. In exact arithmetic they
+  are not needed, and the reduction from every length to tensor powers of $C$ is
+  that of \cite[\S\S3--5]{oai-dft}.
+\item Fixed-tape setup concerns the multitape Turing machine and is not needed
+  in the model of \cite[\S1.1]{oai-dft}.
+\item The opposite-bank primitive, ordinary leaves and prime packing belong to
+  the bit interchange and the multiplication assembly, which are not used.
+\end{itemize}
 
 \section{Credits}\label{sec:credits}
 The finite network is community work recorded in \cite{cms}. Its NOTICE,
