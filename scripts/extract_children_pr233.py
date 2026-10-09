@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PIN = '3b71738c1c155b807099f599bf8059ef4d1bc14a216f0262eea127486a60045b'
+PIN = '691cb0aaeb0d6b993e1e1e5116ae7a5c57af058a8c413249016347d1b40d3b90'
 
 
 def main():
@@ -30,7 +30,7 @@ def main():
                     'applies C^{(x)rho} (or its inverse) after rank-zero adapters; roles_per_vertex counts persistent arrays '
                     'per cover vertex.',
         source=dict(repository='https://github.com/CrocSwap/integer-mult-bounds',
-                    commit='52c6fba58ff74fdca1131e50379287491e599f74',
+                    commit='109a857a329d18ed5552d5573f17ddfa886ae57f',
                     path='research/source-assisted-v4-layer/certificate.json', field='complex_profile',
                     sha256=digest, certified_complex_saving=d['complex_saving']),
         m=p['m'], h=p.get('h', 22), v=p.get('v', 1320), R=p.get('R'), loss=p.get('loss', 440),

@@ -21,7 +21,7 @@ def main():
     print('sources PASS: children %s, upstream %s at %s' % (digest[:12], sources['network']['sha256'][:12],
                                                           sources['network']['commit'][:7]))
     # the later suppliers: PR #200 (physical-frame ledger) and PR #194 (source-assisted flow word)
-    for key, name, saving in (('network_pr200', 'pr200', '3327/5000000'), ('network_pr194', 'pr194', '7009/10000000'), ('network_pr233', 'pr233', '7086/10000000')):
+    for key, name, saving in (('network_pr200', 'pr200', '3327/5000000'), ('network_pr194', 'pr194', '7009/10000000'), ('network_pr233', 'pr233', '7099/10000000')):
         pin = sources[key]
         children = (ROOT / 'certificates' / ('network-children-%s.json' % name)).read_bytes()
         digest = hashlib.sha256(children).hexdigest()

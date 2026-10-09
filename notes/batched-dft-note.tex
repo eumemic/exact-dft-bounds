@@ -44,7 +44,7 @@ with Anthropic Claude assistance) replaces the network by the complex supplier
 of that repository's PR \#200 and obtains $\theta=1-3327/5000000=1-6.654\times10^{-4}$;
 Section~\ref{sec:pr194} uses its source-assisted supplier (PR \#184/\#194) and
 obtains $\theta=1-7009/10^{7}=1-7.009\times10^{-4}$, and with that word's
-physical layer replaced by PR \#200's (PR \#233), $\theta=1-7086/10^{7}$. The same bound holds for exact complex convolution
+reuse pairing replaced by PR \#200's (PR \#233), $\theta=1-7099/10^{7}$. The same bound holds for exact complex convolution
 as a bilinear algorithm, with general multiplication allowed for the pointwise
 products as in OpenAI's Corollary~1.3. The theorem depends on the correctness of that network. Its
 proofs are written arguments, checked in part by scripts, and have had no
@@ -574,8 +574,8 @@ Propositions~\ref{prop:network194} and~\ref{prop:moment194}.
 \end{proof}
 
 \begin{proposition}\label{prop:network233}
-The complex supplier of \cite{pr233} (PR \#194's word with only its physical
-layer, operation frames and reuse pairs, replaced by PR \#200's descent) is a
+The complex supplier of \cite{pr233} (PR \#194's word with only its reuse
+pairs replaced by PR \#200's maximum-weight pairing, frames unchanged) is a
 batched network of width $66$ on $|G|\cdot12052$ roles with the per-vertex
 children of \path{certificates/network-children-pr233.json}; every child has
 width at most $20$. \emph{Proof (by reference).} The proof of
@@ -584,13 +584,13 @@ contract are PR \#184/\#194's unchanged on that layer, and PR \#200's complete
 complex checker admits the layer on the aligned word; the ledger identity
 $\sum_\rho\rho n_\rho=794112=66\cdot12052-1320$ holds with a different child
 histogram, and \cite{pr233} certifies the moment root
-$3543063/5000000000=7.0861\ldots\times10^{-4}$. For $\theta=1-7086/10^{7}$ the
-script gives $\sum_\rho n_\rho(\rho/66)^\theta<12052-0.00035$ and fails at
-$a=7087/10^{7}$.
+$3549537/5000000000=7.0991\ldots\times10^{-4}$. For $\theta=1-7099/10^{7}$ the
+script gives $\sum_\rho n_\rho(\rho/66)^\theta<12052-0.00021$ and fails at
+$a=7100/10^{7}$.
 \end{proposition}
 
 \begin{theorem}\label{thm:main233}
-Theorem~\ref{thm:main} holds with $\theta=1-7086/10^{7}=1-7.086\times10^{-4}$.
+Theorem~\ref{thm:main} holds with $\theta=1-7099/10^{7}=1-7.099\times10^{-4}$.
 \end{theorem}
 
 Theorems~\ref{thm:main200}, \ref{thm:main194} and~\ref{thm:main233} rest on different
@@ -735,10 +735,10 @@ re-check of the moment, and the observation that the community network applies.
   commit \texttt{a8c87783785be6fe20c4a8bb2ac4b3eec295a179}, package
   \path{research/source-assisted-v4}; construction by icekylinx (PR \#184,
   \path{notes/source-assisted-note.tex}), with OpenAI GPT-6 Astra assistance.
-\bibitem{pr233} C.~Boukhalfa, \emph{A stronger complex supplier: PR200's physical
-  layer on the source-assisted v4 word}, PR \#233 of
+\bibitem{pr233} C.~Boukhalfa, \emph{A stronger complex supplier: PR200's reuse
+  pairing on the source-assisted v4 word}, PR \#233 of
   \url{https://github.com/CrocSwap/integer-mult-bounds}, commit
-  \texttt{52c6fba58ff74fdca1131e50379287491e599f74}, package
+  \texttt{109a857a329d18ed5552d5573f17ddfa886ae57f}, package
   \path{research/source-assisted-v4-layer}.
 \bibitem{cms} D.~Colkitt et al., \emph{A sharper exponent for integer
   multiplication} (community repository),
