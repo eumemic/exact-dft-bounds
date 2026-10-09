@@ -235,3 +235,7 @@ Source-assisted construction: icekylinx (PR #184, OpenAI GPT-6 Astra assistance;
 the PR #168 v4 modules by ikeboy (PR #193/#194). Inherited paired-cube, matching, gauge, semantic, shared-core and
 module credits as in that package's CREDITS.md and the PR #168 lineage above. This section claims only the
 observation that the flow word is a batched network in the sense of the note and the re-check of its moment.
+
+--- Supplier of Proposition 6.4 (PR #233 of CrocSwap/integer-mult-bounds, commit 52c6fba) ---
+PR #194's source-assisted word with the physical layer of PR #200's descent; Chafik Boukhalfa with substantial
+Anthropic Claude and OpenAI Codex assistance; all PR #184/#194 and PR #168 lineage credits above apply.

@@ -52,5 +52,20 @@
    "research/source-assisted-v4/PROOF.md"
   ],
   "prerequisite": "PR #184 (icekylinx) source-assisted construction; PR #168 v4 modules at 4a3c769e5c5430e7114c4d3e099ff34664677f17"
+ },
+ "network_pr233": {
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "pr": 233,
+  "commit": "52c6fba58ff74fdca1131e50379287491e599f74",
+  "path": "research/source-assisted-v4-layer/certificate.json",
+  "field": "complex_profile",
+  "sha256": "3b71738c1c155b807099f599bf8059ef4d1bc14a216f0262eea127486a60045b",
+  "derived": "certificates/network-children-pr233.json",
+  "derived_sha256": "548fc6a7476c4972a5e501ed8e5bc3f348cc64e2783ef1020c0679bfc95987b8",
+  "proof_notes": [
+   "research/source-assisted-v4-layer/PROOF.md",
+   "notes/source-assisted-note.tex (PR #184)"
+  ],
+  "prerequisite": "PR #194 at a8c87783785be6fe20c4a8bb2ac4b3eec295a179 with the physical layer of PR #200"
  }
 }

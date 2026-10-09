@@ -1,4 +1,9 @@
-# Exact DFT with a 7.009·10⁻⁴ power saving in the logarithm
+# Exact DFT with a 7.086·10⁻⁴ power saving in the logarithm
+
+**Update (PR #233 supplier).** PR #194's word with the physical layer of PR #200 (CrocSwap/integer-mult-bounds PR #233 at
+`52c6fba`, `research/source-assisted-v4-layer/certificate.json`, field `complex_profile`) certifies the moment root
+7.0861·10⁻⁴; `scripts/verify_moment.py --children certificates/network-children-pr233.json --a 7086/10000000` passes
+(margin 3.6·10⁻⁴; 7087/10⁷ fails), so **θ = 1 − 7086/10⁷** (Proposition 6.4 / Theorem 6.5 of the note).
 
 **Update (PR #200 supplier).** Replacing the network by the complex supplier of CrocSwap/integer-mult-bounds
 PR #200 (commit `a1175449`, package `research/paired-cube-diagonal-bit-168`: the PR #168 v4 lineage with its own

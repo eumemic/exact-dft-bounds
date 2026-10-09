@@ -25,7 +25,7 @@ def main():
     hist = {str(r): n for r, n in sorted(((int(r), n) for r, n in p['child_histogram'].items()), key=lambda t: t[0])
             if n}
     out = dict(
-        description='Per-vertex child list of the source-assisted complex supplier of CrocSwap/integer-mult-bounds PR #233 (PR #194 with PR #200's physical layer) '
+        description='Per-vertex child list of the source-assisted complex supplier of CrocSwap/integer-mult-bounds PR #233 (PR #194 with the physical layer of PR #200) '
                     '(PR #184 frame-flow compression with exact dirty lifts on the PR #168 v4 modules). A child of width rho '
                     'applies C^{(x)rho} (or its inverse) after rank-zero adapters; roles_per_vertex counts persistent arrays '
                     'per cover vertex.',
