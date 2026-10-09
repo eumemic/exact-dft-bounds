@@ -5,8 +5,10 @@ Prepared by eumemic with substantial assistance from Claude (Anthropic).
 Licensed under the Apache License, Version 2.0; see LICENSE.
 
 New in this repository: the batched recursion and address lemma for the exact-DFT model
-(notes/batched-dft-note.tex, Lemma 2.2 and Theorem 3.1), the exact moment certificate
-(scripts/verify_moment.py, certificates/moment.json), and the observation that the network
+(notes/batched-dft-note.tex, Lemma 2.2 and Theorem 3.1), the normal-form lemma as used here
+(Lemma 4.1), an independent exact re-check of the moment (scripts/verify_moment.py,
+certificates/moment.json; the upstream repository certifies the same moment), and the
+observation that the network
 below applies to the exact DFT. The batched accounting itself was introduced for integer
 multiplication by icekylinx in CrocSwap/integer-mult-bounds.
 
@@ -23,7 +25,7 @@ three-stage covers, copied retained centers, endpoint gauges, batched recursion;
 GPT-6 Astra and Codex assistance); an664 (completed-core sharing, PR #128; with OpenAI Codex
 assistance); eumemic (positive producer DAG, PR #117, and earlier complex networks and source
 frames; with Claude assistance); Aurel Prosz (Paureel); Zhihao Chen (jacklightChen); Swapnil
-Jain; dleen; Douglas Colkitt (repository, framework, integration and review); and OpenAI
+Jain; dleen (retained totals and stage sharing, PR #4); Douglas Colkitt (repository, framework, integration and review); and OpenAI
 (original complex phase network). Other contributors credited there for this lineage retain
 that credit. None of them has reviewed this repository.
 
@@ -31,3 +33,181 @@ The exact-DFT framework whose Sections 3-5 are reused is OpenAI, "An explicit po
 the exact discrete Fourier transform" (25 September 2026), https://github.com/openai/math,
 commit adc7f1241b42e322a6451854ab7e4b4c146bf78a. No text or code from it is copied here.
 This repository is not an OpenAI release or endorsement.
+
+----- Upstream NOTICE text (CrocSwap/integer-mult-bounds, commit d1d6c070f5a8c684727ee7ec35d930f9ebfa9758), reproduced verbatim -----
+Only the blocks pertinent to the complex network used here are reproduced. The complete file,
+with every other contributor notice, is at
+https://github.com/CrocSwap/integer-mult-bounds/blob/d1d6c070f5a8c684727ee7ec35d930f9ebfa9758/NOTICE
+
+A sharper exponent for integer multiplication
+Copyright 2026 Douglas Colkitt
+
+This project includes unmodified source files from OpenAI's manuscript
+"Integer multiplication below n log n" and its accompanying repository:
+https://github.com/openai/math
+Commit: adc7f1241b42e322a6451854ab7e4b4c146bf78a
+
+The original manuscript identifies OpenAI as its author. Its Apache-2.0
+license is retained at upstream/LICENSE. The exact source URLs and hashes
+are recorded in upstream/manifest.json. Proposed modifications are supplied
+as separate files under patches/; upstream source files remain unchanged.
+
+The original local research note, scripts, certificates, patches, and
+documentation were prepared by Douglas Colkitt with assistance from OpenAI
+Codex. The community release incorporates work by the contributors identified
+in the notices below; it is not solely Douglas Colkitt's work.
+This project is not an official OpenAI release or an OpenAI endorsement.
+
+[...]
+
+Dependencies retained from eumemic's Claude-assisted PRs #3 and #5:
+https://github.com/CrocSwap/integer-mult-bounds/pull/3
+https://github.com/CrocSwap/integer-mult-bounds/pull/5
+PR #5 commit: d3d370c34937503bd3fa63c83d505a05e8e50893
+These include complex_circuit.py, complex_network.py, fast_gaussian.py,
+their generators, construction notes and certificates. The Gaussian input
+scaling proof is corrected in this derivative; see the modification notice below.
+Aligned pairing also appears in Bortlesboat's PR #2. Retained totals and bank
+sharing appear in dleen's PR #4 and cheaper retained centers in eumemic's PR #6.
+Their results and ideas are credited separately from this new construction.
+
+[...]
+
+Bulk recursion and controlled tensor basis, 8 October 2026
+Copyright 2026 icekylinx
+
+The new projector batching, controlled simultaneous basis, mixed-width tape
+recursions, whole-residual complex recursion, and dependency-path precision
+guard in the batched-23 proof package are contributed by icekylinx, developed
+with substantial OpenAI GPT-6 Astra assistance. Review corrections and
+repository integration were prepared with OpenAI Codex assistance. They build on the retained
+PR #7 finite producers and the preceding contributions credited above.
+The new package retains the repository's Apache-2.0 license and the original
+authors' attribution. It is not an official OpenAI release or endorsement.
+
+Modification notice, 8 October 2026 (icekylinx): the retained fast Gaussian
+proof now bounds shifted approximation error by F=2^ceil(1.14 alpha^2).
+The P=34p precision budget and asymptotic exponent are unchanged. New batching
+checks are integrated into make verify. Existing attribution and licenses
+are retained.
+
+Partial-swap extension, 8 October 2026
+Copyright 2026 icekylinx
+
+The partial-swap framing, binary retained-total triple construction,
+dependency-preserving positive labels and carrier reuse, unequal (25,23,57)
+common basis, improved complex batching, and exact assembly are contributed
+by icekylinx with substantial OpenAI GPT-6 Astra and Codex assistance.
+This extension directly inherits PR #10, commit
+62691e395a0458ce089a1c7b5d89e74291e95e29. The portable producer adapters
+modify the retained paired-exclusion and shared-point implementations credited
+above. The original licenses, attribution, and Gaussian correction are retained.
+
+[...]
+
+Endpoint-gauge extension, 8 October 2026
+Copyright 2026 icekylinx
+
+The complementary auxiliary endpoint gauges, (32,30,40) controlled basis,
+general nondegenerate binary phase residuals, retained-center complex producer,
+updated path guard and exact assembly are contributed by icekylinx with
+substantial OpenAI GPT-6 Astra and Codex assistance. This extension inherits
+f2ab41aebad47861caf6316282c1793e5513845e and its PR #10 ancestry. New portable
+adapters retain the paired-exclusion and shared-point contributions credited
+above. Original licenses, notices and the Gaussian correction are retained.
+
+[...]
+
+Copied retained-center extension, 8 October 2026
+Copyright 2026 icekylinx
+
+The copied retained-center schedule in both orientations, its complex-phase
+transfer, the Wm-N+L rank budget, and the selected (25,23)/(28,28) composition
+are contributed by icekylinx with substantial OpenAI GPT-6 Astra and Codex
+assistance. This extension inherits PR #32 at
+0ef3aeb61f55cc0b321ce6a0ef00acee25cefe52 and the preceding PR #10/#18/#24 work.
+
+The two-stage topology and paid copied-stream endpoint correction are due
+to Aurel Prosz (Paureel), c82d09eb4781b68435e3fa3eb6beea72fa900fab,
+through Zhihao Chen (jacklightChen)'s PR #29 unequal-axis composition,
+9d963275075fa98f1da821e27757b238dafd6b3c. That source also credits Swapnil
+Jain's two-stage development at ae405eb474d1486b2d8aef90139869f927f4836a.
+
+The contiguous corner method, incidence factorization and exact partition
+certificates are due to Rohan Arun (PR #31), method commit
+02f68f95369c39955c5ffcfddbd75cd83e26b305. The selected (25,23) certificate
+specializes Dominik Scholz's parameterization (PR #33),
+a499a345c040aa15b68e984a0904eadc485c7a7e. Their source notices and proof
+snapshots are preserved in references/copied-centers. Historical OpenAI
+Codex, GPT-6 Astra and Anthropic Claude Opus 5.5 assistance is credited to
+the respective imported sources. Existing PR #21/#23 and RaD attribution,
+licenses and the Gaussian correction remain in force.
+
+[...]
+
+Stopped product-ring extension, 9 October 2026
+Copyright 2026 icekylinx
+
+The opposite-bank generic projector factorization, componentwise atom-ring
+adapters, stopped recurrence and outer ordinary-interchange conversion,
+aligned pair-star producer with rational centers, exact denominator-21
+grid and selected (23,23)/(24,24) composition are contributed by icekylinx
+with substantial OpenAI GPT-6 Astra and Codex assistance. This extension
+builds on merged PR #36, 11817ccacb564bb7f98789c20dc11d3fece207e3, and is
+integrated on upstream main 56b66d58297deca1d7dd130247d720e960f77a37.
+
+The retained ordinary leaf uses the preceding projector, corner and
+copied-center proofs. The selected two-stage topology retains Aurel Prosz
+(Paureel), Swapnil Jain and Zhihao Chen's credits; the semantic assembly
+retains PR #21/#23 and RaD's attribution. Paired producers, carrier matching,
+original source notices and each imported license remain unchanged.
+
+[...]
+
+Three-stage cover extension, 9 October 2026
+Copyright 2026 icekylinx
+
+The arbitrary-subspace Clifford frame theorem, three-stage Cayley geometry,
+weighted q-adic GL cover, unit-lower weighted compiler, charged local-ring
+fallback, uniform batching, internal row borrowing and exact composition
+are contributed by icekylinx with substantial OpenAI GPT-6 Astra assistance. This
+repository integration uses Codex assistance and extends
+PR #115, cf60442983c153a3a0f5272ea4713f99eba13c86.
+
+The selected local complex DAG and support/label replay are adopted from
+Copyright 2026 eumemic, PR #117, cbb05ce504d571546d9b7794c186a613c659c3bf,
+with its original Apache-2.0 terms and Claude assistance disclosure.
+The unchanged bit physical word retains Zhihao Chen (jacklightChen),
+PR #97, and Swapnil Jain's underlying witness and assistance notices.
+The prior opposite-bank, stopped ordinary-leaf, copied-center, topology,
+semantic/bulk, precision and analytic credits remain applicable.
+Original source notices and license bytes are preserved in
+references/three-stage-cover/pr117/ and references/partial-gauge/.
+
+[...]
+
+Paired-cube and shared-core extension, 9 October 2026
+Copyright 2026 icekylinx
+
+The paired-coordinate triple-cube identity, signed overlap channels,
+original-source involution, coordinate-star centers, concrete frame/carrier
+compiler, chronological source gauges, PR97 gauge-subset selection,
+orthogonal cross-stage routing and exact supplier/assembly integration
+are contributed by icekylinx with substantial OpenAI GPT-6 Astra assistance.
+Repository integration uses Codex assistance and extends PR #130 at
+6a9970a530119174507904e23592fd59ede19a5d.
+
+The substantial completed-core workspace-sharing principle is credited to
+an664, PR #128, 530588a019b4a74f09180680c9e3961bf649ec89, with its reported
+OpenAI Codex assistance. No source code, partition or serialized witness
+from that PR is imported. The new routing and paired-motif integration
+are described separately and claim no exclusive priority for broad sharing,
+paired-coordinate, Fourier or carrier-matching ideas.
+
+Selected coarse queries restrict the retained eumemic PR #117 positive DAG;
+its original Apache-2.0 and Claude assistance notices remain unchanged.
+The bit word and original frames retain Zhihao Chen's PR #97 and Swapnil
+Jain's frozen witness, notices and historical assistance disclosures.
+Earlier generalized Clifford, three-stage, uniform weighted recursion,
+ordinary-leaf, semantic/bulk, precision and analytic credits remain in force.
+Source-specific license bytes are preserved under references/.

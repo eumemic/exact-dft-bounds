@@ -6,7 +6,7 @@ Checks, in exact rational arithmetic, that
     sum_rho N_rho * (rho/m)**theta  <  W,      theta = 1 - a,
 
 for the child histogram N of the network in certificates/network-children.json.
-By Theorem 3.3 of notes/batched-dft-note.tex this gives C^{(x)k} in O(2^k (k+1)^theta)
+By Theorem 3.1 of notes/batched-dft-note.tex this gives C^{(x)k} in O(2^k (k+1)^theta)
 operations in the exact model of OpenAI's "An explicit power saving for the exact discrete
 Fourier transform", and with it the exact transform at every length.
 
