@@ -93,6 +93,16 @@ The constants are astronomically large: the network has about 2^2570 roles, and 
 base range is of order 10⁹ bits. This is an asymptotic existence and explicitness result with no
 practical crossover.
 
+## Prior work
+
+Ryan Shea's [shea256/fourier-transform-below-nlogn](https://github.com/shea256/fourier-transform-below-nlogn)
+(first commit 8 October 2026, before this repository) proposed transferring the
+community integer-multiplication networks to the exact-DFT model of OpenAI's #130, using Swapnil
+Jain's round-six complex network ([`f2176bc`](https://github.com/Swapnil-jain/integer-mult-kappa/tree/f2176bc1124821bf17eb63725bd366d7bdc020a3))
+for a proposed saving δ = 7.3·10⁻⁵. That work has priority for the idea of the transfer. This
+repository uses the later paired-cube network (PR #144, `d1d6c07`) together with the batched
+recursion, giving 4.856·10⁻⁴. Neither result has been independently reviewed.
+
 ## Credits
 
 The finite network is community work. Full attribution is in the
@@ -120,7 +130,8 @@ contributors to this network:
   and the exact-transform framework reused here.
 
 This repository contributes the batched recursion and normal-form lemma in the exact-DFT model,
-an independent re-check of the moment, and the observation that the community network applies.
+an independent re-check of the moment, and the transfer of the newer paired-cube network
+(see *Prior work* below for the earlier transfer of a community network).
 It was prepared by eumemic with substantial assistance from Claude (Anthropic). Licensed
 Apache-2.0; see [LICENSE](LICENSE) and [NOTICE](NOTICE). This is not an OpenAI release or
 endorsement.
