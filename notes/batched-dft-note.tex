@@ -39,7 +39,12 @@ instead of $\rho$ separate directional steps. Second, the fixed finite network
 is replaced by the complex supplier of the community repository
 \texttt{CrocSwap/integer-mult-bounds}. That network was built by many
 contributors, credited in Section~\ref{sec:credits}. The rest of OpenAI's
-argument is used unchanged. The same bound holds for exact complex convolution
+argument is used unchanged. Section~\ref{sec:pr200} (added by Chafik Boukhalfa,
+with Anthropic Claude assistance) replaces the network by the complex supplier
+of that repository's PR \#200 and obtains $\theta=1-3327/5000000=1-6.654\times10^{-4}$;
+Section~\ref{sec:pr194} uses its source-assisted supplier (PR \#184/\#194) and
+obtains $\theta=1-7009/10^{7}=1-7.009\times10^{-4}$, and with that word's
+reuse pairing replaced by PR \#200's (PR \#233), $\theta=1-7099/10^{7}$. The same bound holds for exact complex convolution
 as a bilinear algorithm, with general multiplication allowed for the pointwise
 products as in OpenAI's Corollary~1.3. The theorem depends on the correctness of that network. Its
 proofs are written arguments, checked in part by scripts, and have had no
@@ -381,6 +386,256 @@ about $2.0\times10^{-10}$ in \path{scripts/paired_cube_network.py}). Our script
 also passes at that value, with margin $6.0\times10^{-6}$, and either value may
 be used in Theorem~\ref{thm:main}.
 
+\section{A stronger supplier: PR \#200}\label{sec:pr200}
+The repository \cite{cms} has continued past commit \texttt{d1d6c07}. Its later
+complex suppliers keep the shared-core ledger of Proposition~\ref{prop:network}
+and lower the moment. We use the complex supplier of PR \#200
+(\cite{pr200}; Chafik Boukhalfa with Anthropic Claude and OpenAI Codex
+assistance), which is the PR \#168 v4 lineage of eumemic (annealed modules,
+fused outputs, nested schedules, bundle descent, pinned at
+\texttt{4a3c769e}) with that package's own physical operation frames,
+$2{,}310$ compensated reuse pairs and $44$ terminal sinks (James Chang's PR
+\#166 technique). Its parameters are $h=22$, $m=66$, $v=1320$,
+$W=13{,}163$ roles per cover vertex, rank deficit $D=2v-3\ell=1320$ with
+$\ell=440$, and largest child $20$.
+
+\begin{proposition}\label{prop:network200}
+The complex supplier of \cite{pr200} is a batched network of width $m=66$ on
+$W=|G|\cdot13163$ roles, $G=O(66,2)$, with $N_\rho=|G|\cdot n_\rho$, where
+$n_\rho$ is the per-vertex child histogram in
+\path{certificates/network-children-pr200.json}
+(\path{certificate.json}, field \path{complex.profile}, of that package). Every
+child has width at most $20$.
+\end{proposition}
+
+\begin{proof}[Proof (by reference)]
+The four facts of the proof of Proposition~\ref{prop:network} hold with the
+following sources, all pinned in \cite{pr200}.
+\begin{enumerate}
+\item The completed three-stage word with shared completed cores is retained
+  from PR \#144 unchanged (\path{PROOF.md}, ``Paid balanced transfer'', and the
+  retained notes \path{paired-cube-sharing.tex},
+  \path{three-stage-cover-complex.tex}). The local scalar word differs: it is
+  the annealed, fused word of PR \#168 v4 with the package's local circuit. Its
+  complete signed scalar identity is replayed by the package verifier on every
+  formal source, target and dirty column of one column, in both shear signs
+  (\path{complex/physical.py}, \path{complex/verify\_fused.py}), together with
+  the carrier closure, centre closure and target reads. This is the
+  one-column identity that Lemma~\ref{lem:columns} extends to every $f$.
+\item Every operation carries one rational frame shared by both of its
+  registers (the ``operation frame''), and every role's frames nest along its
+  chronology: its entrance (zero, its source line or its gauge), its
+  operations' frames, its root frame if it is a root, and the full space. The
+  frames are the exact representatives of
+  \path{general-clifford-frames.tex}, vendored in that package, so
+  Lemma~\ref{lem:normal} writes each transition as adapters around one child
+  of width equal to its Fourier rank, which is the rank increment along the
+  chain. The verifier checks every nesting and every rank
+  (\path{complex/physical.py}).
+\item The constructions beyond PR \#144 are operations of
+  Definition~\ref{def:network}. A compensated reuse pair renames a dead role's
+  array to its recipient after a compensation read of the inherited dirty
+  value with exact adjoint coefficients (gates); the recipient's gauge is read
+  at the handoff, and the step into it is counted as a child. A terminal sink
+  deletes a destination-only register and routes its writes through a pivot
+  target (gates), removing one child of width $r$ and one of width $h-r$ per
+  sink and stage; the package re-counts the ledger after the deletion and
+  replays the modified word. Fused outputs merge same-singleton signed outputs
+  on disjoint supports (gates). Copied centres are temporary streams as before.
+\item The complete per-vertex child multiset is the ledger of
+  \path{paired-cube-sharing.tex} re-counted by \path{complex/physical.py} and
+  recorded in \path{certificate.json}: $\sum_\rho\rho\,n_\rho=867438=
+  66\cdot13163-1320$, largest child $20$. The verifier also certifies the
+  moment root $a_c=665489485337/10^{15}$ with its own outward interval
+  arithmetic and rejects the next $10^{-15}$ grid point.
+\end{enumerate}
+All gate coefficients are rational or $i$: signed shears have coefficients
+$\pm1$, decoder denominators divide six, and dirty-value compensation uses
+exact rational adjoint coefficients. The network is frame-consistent at every
+scalar gate by construction of the operation frames. The retained all-size
+contracts of \cite{pr200} that concern the network itself (general Clifford
+lifts, common generic bases, uniform weighted compilation and completed exact
+complex tensor contracts) are the same kind of written arguments as for
+Proposition~\ref{prop:network}; its remaining contracts (arbitrary-width
+routing, restored internal rows, layout, prime supply, precision/recovery,
+uniform setup and analytic fixed-tape transfer) belong to the multiplication
+assembly and are not used here, as in Section~\ref{sec:scope}.
+\end{proof}
+
+\begin{proposition}\label{prop:moment200}
+For the network of Proposition~\ref{prop:network200} and
+$\theta=1-3327/5000000$,
+\[
+ \sum_\rho n_\rho\Bigl(\frac\rho{66}\Bigr)^{\theta}<13163-0.00269,
+\]
+so $\mu<1$.
+\end{proposition}
+
+\begin{proof}
+The script \path{scripts/verify\_moment.py} with
+\path{--children certificates/network-children-pr200.json} evaluates the same
+upper bounds as in Proposition~\ref{prop:moment} in exact rational arithmetic;
+the certified margin is recorded in \path{certificates/moment-pr200.json}. As
+a control, the script fails at $a=6655/10^{7}$. The upstream certified value
+$a_c=6.65489\ldots\times10^{-4}$ lies between the two; the bounds used here are
+slightly weaker than upstream's, so $3327/5000000=6.654\times10^{-4}$ is the
+value we certify.
+\end{proof}
+
+\begin{theorem}\label{thm:main200}
+Theorem~\ref{thm:main} holds with $\theta=1-3327/5000000=1-6.654\times10^{-4}$.
+For every fixed $\kappa<3327/5000000$, both problems take
+$O\bigl(n(\log n)^{1-\kappa}\bigr)$ operations.
+\end{theorem}
+
+\begin{proof}
+Replace Propositions~\ref{prop:network} and~\ref{prop:moment} by
+Propositions~\ref{prop:network200} and~\ref{prop:moment200} in
+Section~\ref{sec:proof}; nothing else changes. The width $m=66$ enters only
+through the moment and the base range.
+\end{proof}
+
+\section{The source-assisted supplier: PR \#194}\label{sec:pr194}
+The frontier complex supplier of \cite{cms} at the time of writing is the
+source-assisted word of icekylinx (PR \#184, with OpenAI GPT-6 Astra assistance)
+rebuilt on the PR \#168 v4 modules by ikeboy (PR \#193/\#194, \cite{pr194}). It
+is a different compilation of the same paired-cube program: equal-frame
+fresh-channel compression (``frame flow'') with exact arbitrary-dirty lifts.
+Its parameters are $h=22$, $m=66$, $v=1320$, $W=12{,}052$ roles per cover
+vertex, deficit $1320$ and largest child $20$.
+
+\begin{proposition}\label{prop:network194}
+The complex supplier of \cite{pr194} is a batched network of width $m=66$ on
+$W=|G|\cdot12052$ roles, with $N_\rho=|G|\cdot n_\rho$ and $n_\rho$ the
+per-vertex child histogram in \path{certificates/network-children-pr194.json}
+(field \path{complex\_profile} of its \path{certificate.json}). Every child has
+width at most $20$.
+\end{proposition}
+
+\begin{proof}[Proof (by reference)]
+The construction is \path{notes/source-assisted-note.tex} of \cite{cms}
+(PR \#184) with the v4 package \path{research/source-assisted-v4} of
+\cite{pr194}; its checkers are \path{complex\_frame\_flow.py},
+\path{exact\_complex\_flow\_lift.py} and \path{contract\_v4.py}.
+\begin{enumerate}
+\item The complete transcript is a linear word $z_{\rm final}=Mz+Lx$ with $M$
+  invertible: every operation is an exact local map with dyadic coefficients
+  (the lift certificate records all coefficients in $\{\pm1,\pm2,\pm1/2\}$
+  and their inverse elementary gate programs), applied pointwise, or an
+  original-source control; these are gates. Reads subtract the new dirty
+  response $Az$ at frame zero and leave $y+Bx$ with $K+B=I$ checked exactly;
+  after all reads every live and retired auxiliary is brought to the full
+  frame and every gate is reversed, restoring $z$. This is the one-column
+  identity, replayed by the independent complex scalar transcript with
+  arbitrary dirty probes and mutation controls; Lemma~\ref{lem:columns}
+  extends it to every $f$.
+\item The flow is monotone along nested frame chains (``later reads follow
+  their certified nested chains''; the lift checker verifies a monotone flow
+  and an acyclic once-only reuse DAG, with frame containment at every
+  vertex). Each frame transition is an exact operator with entries in
+  $\mathbb Q(i)$ that normalizes $\mathcal P$, so Lemma~\ref{lem:normal} writes
+  it as adapters around one child of width its Fourier rank; the per-vertex
+  child histogram counts these transitions, the births of fresh coordinates
+  through paid containing-frame transitions, the data children and the
+  copied centres, with the same ledger identity
+  $\sum_\rho\rho\,n_\rho=794112=66\cdot12052-1320$.
+\item The invertible auxiliary maps of the lemma of that note realize all
+  outgoing forms at a frame from the incoming fresh responses plus
+  source controls and retain the complementary coordinates; they are gates
+  on the arrays at that frame, and the compression removes roles, not
+  children.
+\item The contract checker certifies the fresh columns, read chronology,
+  target chains and the normalized profile, and \cite{pr194} certifies the
+  moment root $7.00918\ldots\times10^{-4}$ with outward intervals.
+\end{enumerate}
+As for Proposition~\ref{prop:network}, the exact complex phases and the cover
+are written arguments; the scalar transcript replay checks the one-column
+identity but does not materialize the physical Clifford transports. The
+retained all-size interfaces of \cite{pr194} that concern the multiplication
+assembly are not used here.
+\end{proof}
+
+\begin{proposition}\label{prop:moment194}
+For the network of Proposition~\ref{prop:network194} and
+$\theta=1-7009/10^{7}$,
+$\sum_\rho n_\rho(\rho/66)^{\theta}<12052-0.00052$, so $\mu<1$. The script fails
+at $a=7010/10^{7}$.
+\end{proposition}
+
+\begin{theorem}\label{thm:main194}
+Theorem~\ref{thm:main} holds with $\theta=1-7009/10^{7}=1-7.009\times10^{-4}$.
+For every fixed $\kappa<7009/10^{7}$, both problems take
+$O\bigl(n(\log n)^{1-\kappa}\bigr)$ operations.
+\end{theorem}
+
+\begin{proof}
+As for Theorem~\ref{thm:main200}, with
+Propositions~\ref{prop:network194} and~\ref{prop:moment194}.
+\end{proof}
+
+\begin{proposition}\label{prop:network233}
+The complex supplier of \cite{pr233} (PR \#194's word with only its reuse
+pairs replaced by PR \#200's maximum-weight pairing, frames unchanged) is a
+batched network of width $66$ on $|G|\cdot12052$ roles with the per-vertex
+children of \path{certificates/network-children-pr233.json}; every child has
+width at most $20$. \emph{Proof (by reference).} The proof of
+Proposition~\ref{prop:network194} applies verbatim: the flow, exact lift and
+contract are PR \#184/\#194's unchanged on that layer, and PR \#200's complete
+complex checker admits the layer on the aligned word; the ledger identity
+$\sum_\rho\rho n_\rho=794112=66\cdot12052-1320$ holds with a different child
+histogram, and \cite{pr233} certifies the moment root
+$3549537/5000000000=7.0991\ldots\times10^{-4}$. For $\theta=1-7099/10^{7}$ the
+script gives $\sum_\rho n_\rho(\rho/66)^\theta<12052-0.00021$ and fails at
+$a=7100/10^{7}$.
+\end{proposition}
+
+\begin{theorem}\label{thm:main233}
+Theorem~\ref{thm:main} holds with $\theta=1-7099/10^{7}=1-7.099\times10^{-4}$.
+\end{theorem}
+
+Theorems~\ref{thm:main200}, \ref{thm:main194} and~\ref{thm:main233} rest on different
+suppliers: the first on the physical-frame ledger of PR \#168/\#200, whose
+construction is the closest to Proposition~\ref{prop:network}; the second on
+the flow compilation of PR \#184/\#194. Either may be cited on its own.
+
+\section{The five-stage bridged layout}\label{sec:five}
+Jacob Sussman's \emph{wht-power-saving-lean} \cite{sussman} runs the same
+helper circuit in five stages instead of three: every source pair has a twin
+whose labels agree with its own at three moments, so two pairs are exchanged
+with five invocations in place of six; the width becomes $m=5h=110$ and the
+stock $W=4v+R$. For the \#193 helper circuit (the word of \cite{pr194}) he
+proves in Lean, in the model of \cite{oai-dft}, the transform of every length
+in $O(n(\log n)^z)$ with $z=1-7474546/10^{10}$
+(\texttt{OAI.PowerSaving.transform\_mainZ}) and the block-form
+Walsh--Hadamard bound with $z=1-7474547/10^{10}$. Per cover vertex the ledger
+of that layout, as stated in integer-mult-bounds PR \#250 for the five-stage
+complex supplier of PR \#234, is
+\[
+ H_5 = 5\,H_{\rm inv} + 2v\,(e_{42}+e_{21}+e_{46}+e_{4}),\qquad
+ H_{\rm inv}=(H_3-2v\,e_2)/3,
+\]
+where $H_3$ is the three-stage per-vertex histogram (one invocation per
+stage plus the $2v$ data children of width 2).
+
+\begin{proposition}\label{prop:five}
+\path{scripts/five\_stage\_children.py} derives $H_5$ from the certified
+three-stage children of Sections~\ref{sec:pr194} and~\ref{sec:pr200} (PR \#233).
+With $m=110$, $W=14052+640=14692$ and deficit $3080$,
+\path{scripts/verify\_moment.py} gives, for the word of \cite{pr194},
+$\sum_\rho n_\rho(\rho/110)^\theta<W$ at $\theta=1-7474/10^{7}$ (Sussman's
+Lean figure rounded down to this grid), and for the word of \cite{pr233}
+at $\theta=1-7547/10^{7}$, failing at $7548/10^{7}$.
+\end{proposition}
+
+The layout is a batched network for the \#193 word by Sussman's Lean
+development (the frame lemma, the generalized engine and the kernel-evaluated
+certificate). The pairing of \cite{pr233} changes neither the ports nor the
+source pairs on which the twin structure rests, nor the frames, so the same
+layout applies to its word with the ledger above; its kernel-checked
+certificate has not been produced (his rebuild scripts are not published),
+so $\theta=1-7547/10^{7}$ is a priced transfer, one step less checked than
+Theorems~\ref{thm:main200}--\ref{thm:main233}.
+
 \section{Proof of Theorem~\ref{thm:main}}\label{sec:proof}
 By Propositions~\ref{prop:network} and~\ref{prop:moment},
 Theorem~\ref{thm:batched} gives $C^{\otimes k}$ in $O(2^k(k+1)^\theta)$ with
@@ -481,7 +736,20 @@ NOTICE. The principal contributions to this network are:
   \emph{Integer multiplication below $n\log n$}, and the exact-transform
   framework of \cite{oai-dft} reused here.
 \end{itemize}
-Other contributors credited in \cite{cms} for parts of this network's lineage
+For the supplier of Section~\ref{sec:pr200}: \textbf{eumemic} (with Anthropic
+Claude and OpenAI Codex assistance), PR \#117/\#155/\#157/\#161/\#168: module
+infrastructure, scalar modules, physical frames and reuse, output merging,
+annealed modules, nested schedules, fused outputs and bundle descent;
+\textbf{James Chang (jamesyc)}, PR \#124/\#166: compensated birth cuts and
+terminal-output accumulation; \textbf{DaysSky}, PR \#162/\#192: extended carrier
+closure and the frame-layout ceiling; \textbf{GamingPuzzled}, PR \#160;
+\textbf{gupt1156} and \textbf{Abhinav Ramachandran}, PR \#148/\#158;
+\textbf{Rohan Arun}, PR \#100/\#103; \textbf{Chafik Boukhalfa} (with Anthropic
+Claude and OpenAI Codex assistance), PR \#175/\#179/\#181/\#189/\#196/\#200: the
+package's local circuits, operation-frame descent, independent complete
+admission and the fast checker. Section~\ref{sec:pr200} claims only the
+observation that this supplier is a batched network and the re-check of its
+moment. Other contributors credited in \cite{cms} for parts of this network's lineage
 retain that credit. This note claims only the following: the transfer of
 batched accounting to the exact-DFT model (Lemma~\ref{lem:address},
 Theorem~\ref{thm:batched}), the normal-form lemma as used here, an independent
@@ -494,6 +762,27 @@ re-check of the moment, and the observation that the community network applies.
   \texttt{adc7f1241b42e322a6451854ab7e4b4c146bf78a}, directory
   \path{preprints/An-explicit-power-saving-for-the-exact-}\allowbreak
   \path{discrete-Fourier-transform-September-25-2026}.
+\bibitem{pr200} C.~Boukhalfa, \emph{A stronger bit supplier: fixed-coordinate and
+  face-diagonal bit local circuit on PR168 v4}, PR \#200 of
+  \url{https://github.com/CrocSwap/integer-mult-bounds}, commit
+  \texttt{a1175449f34d39ff933d9d8ab23ced1f32b290ec}, package
+  \path{research/paired-cube-diagonal-bit-168} (its complex supplier is the
+  one used here).
+\bibitem{pr194} ikeboy, \emph{Source-assisted v4 complex word with PR189's bit
+  supplier}, PR \#194 of \url{https://github.com/CrocSwap/integer-mult-bounds},
+  commit \texttt{a8c87783785be6fe20c4a8bb2ac4b3eec295a179}, package
+  \path{research/source-assisted-v4}; construction by icekylinx (PR \#184,
+  \path{notes/source-assisted-note.tex}), with OpenAI GPT-6 Astra assistance.
+\bibitem{pr233} C.~Boukhalfa, \emph{A stronger complex supplier: PR200's reuse
+  pairing on the source-assisted v4 word}, PR \#233 of
+  \url{https://github.com/CrocSwap/integer-mult-bounds}, commit
+  \texttt{109a857a329d18ed5552d5573f17ddfa886ae57f}, package
+  \path{research/source-assisted-v4-layer}.
+\bibitem{sussman} J.~Sussman, \emph{wht-power-saving-lean}: a Lean 4 development of
+  the frame lemma, a five-stage bridged layout and the exact transform of every
+  length at $z=1-7474546/10^{10}$ in the model of \cite{oai-dft},
+  \url{https://github.com/jacobalansussman/wht-power-saving-lean}, commit
+  \texttt{f010392c923279e3dd59ef3aa5fedad23affc5fd}.
 \bibitem{cms} D.~Colkitt et al., \emph{A sharper exponent for integer
   multiplication} (community repository),
   \url{https://github.com/CrocSwap/integer-mult-bounds}, commit

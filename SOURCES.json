@@ -19,5 +19,67 @@
   "repository": "https://github.com/openai/math",
   "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
   "path": "preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026"
+ },
+ "network_pr200": {
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "pr": 200,
+  "commit": "a1175449f34d39ff933d9d8ab23ced1f32b290ec",
+  "path": "research/paired-cube-diagonal-bit-168/certificate.json",
+  "field": "complex.profile",
+  "sha256": "853afa75980e11ce16b333c28311c4f635e84065867c049fda9916c2419091ed",
+  "derived": "certificates/network-children-pr200.json",
+  "derived_sha256": "333a4e26efb3c26c37c14b42ba000173c30a7b843b1b459aa3f99529c277457f",
+  "proof_notes": [
+   "research/paired-cube-diagonal-bit-168/PROOF.md",
+   "research/paired-cube-diagonal-bit-168/references/pr168-v4/notes/general-clifford-frames.tex",
+   "research/paired-cube-diagonal-bit-168/references/pr166/PROOF.md",
+   "research/paired-cube-diagonal-bit-168/references/pr141/ORIGINAL-PROOF.md"
+  ],
+  "prerequisite": "PR #168 v4 at 4a3c769e5c5430e7114c4d3e099ff34664677f17 (eumemic), vendored under references/pr168-v4 of that package"
+ },
+ "network_pr194": {
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "pr": 194,
+  "commit": "a8c87783785be6fe20c4a8bb2ac4b3eec295a179",
+  "path": "research/source-assisted-v4/certificate.json",
+  "field": "complex_profile",
+  "sha256": "1600b77cb1f41c0f87967f20133eccda5e6c5f215b70361dfd0c49c861248e59",
+  "derived": "certificates/network-children-pr194.json",
+  "derived_sha256": "d78a1b9543609c2abfe242b175b0fb8d489ac1fd2eb770b281c18c5bd812dda5",
+  "proof_notes": [
+   "notes/source-assisted-note.tex (PR #184, icekylinx)",
+   "docs/source-assisted.md",
+   "research/source-assisted-v4/PROOF.md"
+  ],
+  "prerequisite": "PR #184 (icekylinx) source-assisted construction; PR #168 v4 modules at 4a3c769e5c5430e7114c4d3e099ff34664677f17"
+ },
+ "network_pr233": {
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "pr": 233,
+  "commit": "109a857a329d18ed5552d5573f17ddfa886ae57f",
+  "path": "research/source-assisted-v4-layer/certificate.json",
+  "field": "complex_profile",
+  "sha256": "691cb0aaeb0d6b993e1e1e5116ae7a5c57af058a8c413249016347d1b40d3b90",
+  "derived": "certificates/network-children-pr233.json",
+  "derived_sha256": "e0b73aa069545042ac34b5e7e9a23977f531328aed3ffcf393eb76aa27bfaadb",
+  "proof_notes": [
+   "research/source-assisted-v4-layer/PROOF.md",
+   "notes/source-assisted-note.tex (PR #184)"
+  ],
+  "prerequisite": "PR #194 at a8c87783785be6fe20c4a8bb2ac4b3eec295a179 with PR #200's maximum-weight reuse pairing (PR #168's frames unchanged)"
+ },
+ "network_pr194_five": {
+  "derived_from": "certificates/network-children-pr194.json",
+  "layout": "five-stage bridged layout of Jacob Sussman, wht-power-saving-lean f010392c923279e3dd59ef3aa5fedad23affc5fd (Lean-checked for the #193 helper circuit); ledger as stated by integer-mult-bounds PR #250",
+  "derived": "certificates/network-children-pr194-five.json",
+  "derived_sha256": "7e4e6ee2a6f5c5bcda3e4f1feb74dec5fb330ef9869204679f6389e080ca9399",
+  "a": "7474/10000000"
+ },
+ "network_pr233_five": {
+  "derived_from": "certificates/network-children-pr233.json",
+  "layout": "five-stage bridged layout of Jacob Sussman, wht-power-saving-lean f010392c923279e3dd59ef3aa5fedad23affc5fd (Lean-checked for the #193 helper circuit); ledger as stated by integer-mult-bounds PR #250",
+  "derived": "certificates/network-children-pr233-five.json",
+  "derived_sha256": "62c4af5597ed4e7f78d92cc8ae30e53bb6278320453aa548960cdf3b6e95bfec",
+  "a": "7547/10000000"
  }
 }

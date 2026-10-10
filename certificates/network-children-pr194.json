@@ -1,0 +1,41 @@
+{
+ "description": "Per-vertex child list of the source-assisted complex supplier of CrocSwap/integer-mult-bounds PR #194 (PR #184 frame-flow compression with exact dirty lifts on the PR #168 v4 modules). A child of width rho applies C^{(x)rho} (or its inverse) after rank-zero adapters; roles_per_vertex counts persistent arrays per cover vertex.",
+ "source": {
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "commit": "a8c87783785be6fe20c4a8bb2ac4b3eec295a179",
+  "path": "research/source-assisted-v4/certificate.json",
+  "field": "complex_profile",
+  "sha256": "1600b77cb1f41c0f87967f20133eccda5e6c5f215b70361dfd0c49c861248e59",
+  "certified_complex_saving": "219037/312500000"
+ },
+ "m": 66,
+ "h": 22,
+ "v": 1320,
+ "R": null,
+ "loss": 440,
+ "roles_per_vertex": 12052,
+ "rank_per_vertex": 794112,
+ "deficit_per_vertex": 1320,
+ "child_histogram": {
+  "1": 87534,
+  "2": 39834,
+  "3": 29769,
+  "4": 12627,
+  "5": 5850,
+  "6": 4815,
+  "7": 2118,
+  "8": 4593,
+  "9": 1287,
+  "10": 2790,
+  "11": 1062,
+  "12": 3591,
+  "13": 381,
+  "14": 2226,
+  "15": 5637,
+  "16": 264,
+  "17": 243,
+  "18": 7959,
+  "19": 501,
+  "20": 66
+ }
+}

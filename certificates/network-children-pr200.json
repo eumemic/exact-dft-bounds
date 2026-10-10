@@ -1,0 +1,41 @@
+{
+ "description": "Per-vertex child list of the paired-cube complex supplier of CrocSwap/integer-mult-bounds PR #200 (PR #168 v4 lineage with the package's own physical frames, 2,310 compensated reuse pairs and 44 terminal sinks). A child of width rho applies C^{(x)rho} (or its inverse) after rank-zero adapters; roles_per_vertex counts persistent arrays per cover vertex.",
+ "source": {
+  "repository": "https://github.com/CrocSwap/integer-mult-bounds",
+  "commit": "a1175449f34d39ff933d9d8ab23ced1f32b290ec",
+  "path": "research/paired-cube-diagonal-bit-168/certificate.json",
+  "field": "complex.profile",
+  "sha256": "853afa75980e11ce16b333c28311c4f635e84065867c049fda9916c2419091ed",
+  "certified_complex_saving": "665489485337/1000000000000000"
+ },
+ "m": 66,
+ "h": 22,
+ "v": 1320,
+ "R": 10523,
+ "loss": 440,
+ "roles_per_vertex": 13163,
+ "rank_per_vertex": 867438,
+ "deficit_per_vertex": 1320,
+ "child_histogram": {
+  "1": 93600,
+  "2": 42555,
+  "3": 29427,
+  "4": 10830,
+  "5": 7044,
+  "6": 4407,
+  "7": 2559,
+  "8": 3675,
+  "9": 1323,
+  "10": 2589,
+  "11": 987,
+  "12": 3555,
+  "13": 642,
+  "14": 2142,
+  "15": 3255,
+  "16": 330,
+  "17": 132,
+  "18": 7788,
+  "19": 5829,
+  "20": 561
+ }
+}
