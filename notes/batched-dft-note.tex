@@ -598,6 +598,44 @@ suppliers: the first on the physical-frame ledger of PR \#168/\#200, whose
 construction is the closest to Proposition~\ref{prop:network}; the second on
 the flow compilation of PR \#184/\#194. Either may be cited on its own.
 
+\section{The five-stage bridged layout}\label{sec:five}
+Jacob Sussman's \emph{wht-power-saving-lean} \cite{sussman} runs the same
+helper circuit in five stages instead of three: every source pair has a twin
+whose labels agree with its own at three moments, so two pairs are exchanged
+with five invocations in place of six; the width becomes $m=5h=110$ and the
+stock $W=4v+R$. For the \#193 helper circuit (the word of \cite{pr194}) he
+proves in Lean, in the model of \cite{oai-dft}, the transform of every length
+in $O(n(\log n)^z)$ with $z=1-7474546/10^{10}$
+(\texttt{OAI.PowerSaving.transform\_mainZ}) and the block-form
+Walsh--Hadamard bound with $z=1-7474547/10^{10}$. Per cover vertex the ledger
+of that layout, as stated in integer-mult-bounds PR \#250 for the five-stage
+complex supplier of PR \#234, is
+\[
+ H_5 = 5\,H_{\rm inv} + 2v\,(e_{42}+e_{21}+e_{46}+e_{4}),\qquad
+ H_{\rm inv}=(H_3-2v\,e_2)/3,
+\]
+where $H_3$ is the three-stage per-vertex histogram (one invocation per
+stage plus the $2v$ data children of width 2).
+
+\begin{proposition}\label{prop:five}
+\path{scripts/five\_stage\_children.py} derives $H_5$ from the certified
+three-stage children of Sections~\ref{sec:pr194} and~\ref{sec:pr200} (PR \#233).
+With $m=110$, $W=14052+640=14692$ and deficit $3080$,
+\path{scripts/verify\_moment.py} gives, for the word of \cite{pr194},
+$\sum_\rho n_\rho(\rho/110)^\theta<W$ at $\theta=1-7474/10^{7}$ (Sussman's
+Lean figure rounded down to this grid), and for the word of \cite{pr233}
+at $\theta=1-7547/10^{7}$, failing at $7548/10^{7}$.
+\end{proposition}
+
+The layout is a batched network for the \#193 word by Sussman's Lean
+development (the frame lemma, the generalized engine and the kernel-evaluated
+certificate). The pairing of \cite{pr233} changes neither the ports nor the
+source pairs on which the twin structure rests, nor the frames, so the same
+layout applies to its word with the ledger above; its kernel-checked
+certificate has not been produced (his rebuild scripts are not published),
+so $\theta=1-7547/10^{7}$ is a priced transfer, one step less checked than
+Theorems~\ref{thm:main200}--\ref{thm:main233}.
+
 \section{Proof of Theorem~\ref{thm:main}}\label{sec:proof}
 By Propositions~\ref{prop:network} and~\ref{prop:moment},
 Theorem~\ref{thm:batched} gives $C^{\otimes k}$ in $O(2^k(k+1)^\theta)$ with
@@ -740,6 +778,11 @@ re-check of the moment, and the observation that the community network applies.
   \url{https://github.com/CrocSwap/integer-mult-bounds}, commit
   \texttt{109a857a329d18ed5552d5573f17ddfa886ae57f}, package
   \path{research/source-assisted-v4-layer}.
+\bibitem{sussman} J.~Sussman, \emph{wht-power-saving-lean}: a Lean 4 development of
+  the frame lemma, a five-stage bridged layout and the exact transform of every
+  length at $z=1-7474546/10^{10}$ in the model of \cite{oai-dft},
+  \url{https://github.com/jacobalansussman/wht-power-saving-lean}, commit
+  \texttt{f010392c923279e3dd59ef3aa5fedad23affc5fd}.
 \bibitem{cms} D.~Colkitt et al., \emph{A sharper exponent for integer
   multiplication} (community repository),
   \url{https://github.com/CrocSwap/integer-mult-bounds}, commit

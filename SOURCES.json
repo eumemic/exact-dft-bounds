@@ -67,5 +67,19 @@
    "notes/source-assisted-note.tex (PR #184)"
   ],
   "prerequisite": "PR #194 at a8c87783785be6fe20c4a8bb2ac4b3eec295a179 with PR #200's maximum-weight reuse pairing (PR #168's frames unchanged)"
+ },
+ "network_pr194_five": {
+  "derived_from": "certificates/network-children-pr194.json",
+  "layout": "five-stage bridged layout of Jacob Sussman, wht-power-saving-lean f010392c923279e3dd59ef3aa5fedad23affc5fd (Lean-checked for the #193 helper circuit); ledger as stated by integer-mult-bounds PR #250",
+  "derived": "certificates/network-children-pr194-five.json",
+  "derived_sha256": "7e4e6ee2a6f5c5bcda3e4f1feb74dec5fb330ef9869204679f6389e080ca9399",
+  "a": "7474/10000000"
+ },
+ "network_pr233_five": {
+  "derived_from": "certificates/network-children-pr233.json",
+  "layout": "five-stage bridged layout of Jacob Sussman, wht-power-saving-lean f010392c923279e3dd59ef3aa5fedad23affc5fd (Lean-checked for the #193 helper circuit); ledger as stated by integer-mult-bounds PR #250",
+  "derived": "certificates/network-children-pr233-five.json",
+  "derived_sha256": "62c4af5597ed4e7f78d92cc8ae30e53bb6278320453aa548960cdf3b6e95bfec",
+  "a": "7547/10000000"
  }
 }

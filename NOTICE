@@ -239,3 +239,8 @@ observation that the flow word is a batched network in the sense of the note and
 --- Supplier of Proposition 6.4 (PR #233 of CrocSwap/integer-mult-bounds, commit 52c6fba) ---
 PR #194's source-assisted word with PR #200's maximum-weight reuse pairing (PR #168's frames unchanged); Chafik Boukhalfa with substantial
 Anthropic Claude and OpenAI Codex assistance; all PR #184/#194 and PR #168 lineage credits above apply.
+
+--- Five-stage layout (Section 7) ---
+Jacob Sussman (with Claude assistance): the five-stage bridged layout and its Lean development wht-power-saving-lean
+(f010392, Apache-2.0); hcg890 (integer-mult-bounds PR #234) and SovereignSteak (PR #250, the ledger statement and
+the first composition with PR #233's flow). The derivation script and the priced transfer are this PR's.

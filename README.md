@@ -1,4 +1,12 @@
-# Exact DFT with a 7.099·10⁻⁴ power saving in the logarithm
+# Exact DFT with a 7.099·10⁻⁴ power saving in the logarithm (7.547·10⁻⁴ in the five-stage layout, priced)
+
+**Five-stage layout (Section 7 of the note).** Jacob Sussman's
+[wht-power-saving-lean](https://github.com/jacobalansussman/wht-power-saving-lean) (`f010392`) runs the helper circuit in
+five bridged stages (m = 110, W = 4v + R) and proves in Lean, for the #193 word, the exact DFT of every length at
+z = 1 − 7474546/10¹⁰. `scripts/five_stage_children.py` derives that layout's per-vertex children from the three-stage
+files (H5 = 5·H_inv + 2v·(e42 + e21 + e46 + e4), the ledger stated by integer-mult-bounds#250): the #194 word recovers
+7474/10⁷, and the #233 word gives **7547/10⁷** (margin 1.35·10⁻³; 7548/10⁷ fails), a priced transfer pending a
+kernel-checked certificate of that word in that layout.
 
 **Update (PR #233 supplier).** PR #194's word with the reuse pairing of PR #200 and PR #168's frames unchanged (CrocSwap/integer-mult-bounds PR #233 at
 `109a857`, `research/source-assisted-v4-layer/certificate.json`, field `complex_profile`) certifies the moment root

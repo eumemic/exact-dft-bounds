@@ -1,0 +1,14 @@
+{
+ "children_sha256": "7e4e6ee2a6f5c5bcda3e4f1feb74dec5fb330ef9869204679f6389e080ca9399",
+ "m": 110,
+ "roles_per_vertex": 14692,
+ "rank_per_vertex": 1613040,
+ "deficit_per_vertex": 3080,
+ "max_child": 46,
+ "a": "3737/5000000",
+ "theta": "4996263/5000000",
+ "moment_upper_bound": "14691997939405661471689744722643868/10^30",
+ "margin_lower_bound": "2060594338528310255277356132/10^30",
+ "passed": true,
+ "bounds": "ln: artanh series with tail; exp(x) <= 1 + x + x^2/(2(1 - x/3))"
+}

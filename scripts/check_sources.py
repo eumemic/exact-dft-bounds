@@ -22,6 +22,18 @@ def main():
                                                           sources['network']['commit'][:7]))
     # the later suppliers: PR #200 (physical-frame ledger) and PR #194 (source-assisted flow word)
     for key, name, saving in (('network_pr200', 'pr200', '3327/5000000'), ('network_pr194', 'pr194', '7009/10000000'), ('network_pr233', 'pr233', '7099/10000000')):
+        pass
+    for key, name, saving in (('network_pr194_five', 'pr194-five', '7474/10000000'), ('network_pr233_five', 'pr233-five', '7547/10000000')):
+        pin = sources[key]
+        children = (ROOT / 'certificates' / ('network-children-%s.json' % name)).read_bytes()
+        digest = hashlib.sha256(children).hexdigest()
+        assert digest == pin['derived_sha256'], '%s children file differs from SOURCES.json pin' % name
+        moment = json.loads((ROOT / 'certificates' / ('moment-%s.json' % name)).read_text())
+        assert moment['children_sha256'] == digest and moment['passed'], '%s moment certificate is stale or failed' % name
+        from fractions import Fraction
+        assert Fraction(moment['a']) == Fraction(saving), '%s moment certificate records another saving' % name
+        print('sources PASS: %s (derived five-stage) children %s, a = %s' % (name, digest[:12], moment['a']))
+    for key, name, saving in ():
         pin = sources[key]
         children = (ROOT / 'certificates' / ('network-children-%s.json' % name)).read_bytes()
         digest = hashlib.sha256(children).hexdigest()
